@@ -13,3 +13,4 @@ DoorDev
     1. On
     2. Off
     3. Strobe
+* Here is a video of this in action: http://youtu.be/I6o5dRw-dn8
