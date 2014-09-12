@@ -5,7 +5,10 @@ git@github.com:JamshedVesuna/rpi.git
 
 import RPi.GPIO as gp
 import time
+from flask import Flask
 
+
+app = Flask(__name__)
 
 gp.setwarnings(False)
 gp.setmode(gp.BOARD)
@@ -18,17 +21,23 @@ gp.output(7, True)
 gp.output(11, True)
 
 
-def on(self):
+@app.route('/on')
+def on():
     gp.output(13, False)
     gp.output(15, True)
 
-def off(self):
+@app.route('/off')
+def off():
     gp.output(13, False)
     gp.output(15, False)
 
-def strobe(self):
+@app.route('/strobe')
+def strobe():
     while True:
         time.sleep(0.1)
-        self.on()
+        on()
         time.sleep(0.1)
-        self.off()
+        off()
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0')
