@@ -1,0 +1,3 @@
+[submodule "Lights/terminal_beats"]
+	path = Lights/terminal_beats
+	url = git@github.com:ugotnitined/terminal_beats.git
