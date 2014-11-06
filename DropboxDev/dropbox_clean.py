@@ -7,7 +7,6 @@ app_key = ''
 app_secret = ''
 
 #TODO: Logging, time zones, auth handling, etc
-#TODO: Create new folders based on year if doesnt exist
 
 class MediaCleaner:
 
@@ -52,7 +51,7 @@ class MediaCleaner:
                 file_year = file_time.year
                 if not self.dir_exists(backup_folder, str(file_year)):
                     self.client.file_create_folder(backup_folder+str(file_year))
-                if file_time > time_pin:
+                if file_time < time_pin:
                     old_path = media_file['path']
                     components = old_path.split('/')
                     file_name = components[len(components)-1]
