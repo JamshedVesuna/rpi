@@ -14,3 +14,8 @@ DoorDev
     2. Off
     3. Strobe
 * Here is a video of this in action: http://youtu.be/I6o5dRw-dn8
+
+DropboxDev
+-------
+* dropbox_clean.py: A script to clean my `Camera Uploads/` directory and archive pictures older than 3 days.
+    1. This works with a Dropbox Datastore App API. I have given my app permission to only media files.
