@@ -25,6 +25,7 @@ gp.output(11, True)
 def on():
     gp.output(13, False)
     gp.output(15, True)
+    return "Lights turned on"
 
 @app.route('/off')
 def off():
@@ -33,11 +34,13 @@ def off():
 
 @app.route('/strobe')
 def strobe():
-    while True:
+    i = 0
+    while i < 30:
         time.sleep(0.1)
         on()
         time.sleep(0.1)
         off()
+        i += 1
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
