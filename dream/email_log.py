@@ -9,8 +9,6 @@ def send_email():
    c = cronos.Cronos()
    today = time.strftime("%m/%d/%Y")
 
-
-
    p = subprocess.Popen('ls log/ |sort', shell=True, stdout=subprocess.PIPE,
            stderr=subprocess.STDOUT)
    logfile = path.join('log', p.stdout.readlines()[-1].strip())
@@ -24,20 +22,21 @@ def send_email():
    SUBJECT = 'LD {0}'.format(today)
    TEXT = body
 
-   # Prepare actual message
    message = """\From: %s\nTo: %s\nSubject: %s\n\n%s
    """ % (FROM, ", ".join(TO), SUBJECT, TEXT)
    try:
-       #server = smtplib.SMTP(SERVER)
-       server = smtplib.SMTP("smtp.gmail.com", 587) #or port 465 doesn't seem to work!
+       server = smtplib.SMTP("smtp.gmail.com", 587)
        server.ehlo()
        server.starttls()
        server.login(gmail_user, gmail_pwd)
        server.sendmail(FROM, TO, message)
-       #server.quit()
        server.close()
        print 'successfully sent the mail'
    except:
        print "failed to send mail"
 
-send_email()
+def main():
+    send_email()
+
+if __name__ == '__main__':
+    main()
