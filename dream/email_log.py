@@ -17,11 +17,8 @@ def send_email():
    body = ''
    with open(logfile, 'r') as f:
        body = f.read()
-   #gmail_user = "rpi.auto.mailer.314"
    gmail_user = c.get('gmail_user')
-   #gmail_pwd = "8YEj5^Xw8P5J*Zd!STog"
    gmail_pwd = c.get('gmail_pwd')
-   #FROM = 'rpi.auto.mailer.314@gmail.com'
    FROM = c.get('from')
    TO = ['jvesuna314@gmail.com'] #must be a list
    SUBJECT = 'LD {0}'.format(today)
